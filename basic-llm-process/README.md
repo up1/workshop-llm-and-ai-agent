@@ -98,3 +98,34 @@ $python step_6_working_with_pytorch.py
 First batch: [tensor([[13225,    11,  2375,    13]]), tensor([[  11, 2375,   13, 2763]])]
 Second batch: [tensor([[  11, 2375,   13, 2763]]), tensor([[2375,   13, 2763,  495]])]
 ```
+
+## 8. Create token embeddings and train a simple language model
+* Create an embedding layer to convert token IDs into dense vectors
+* Data is ready for LLM training
+
+```
+$python step_7_embedding.py
+Input token IDs: tensor([2, 3, 5, 1])
+
+Vocabulary size: 6
+Output dimension: 3
+
+
+Emedding layer weights:
+ Parameter containing:
+tensor([[ 0.3374, -0.1778, -0.1690],
+        [ 0.9178,  1.5810,  1.3010],
+        [ 1.2753, -0.2010, -0.1606],
+        [-0.4015,  0.9666, -1.1481],
+        [-1.1589,  0.3255, -0.6315],
+        [-2.8400, -0.7849, -1.4096]], requires_grad=True)
+
+Embedding for token ID 3:
+ tensor([[-0.4015,  0.9666, -1.1481]], grad_fn=<EmbeddingBackward0>)
+
+Embeddings for the entire input sequence:
+ tensor([[ 1.2753, -0.2010, -0.1606],
+        [-0.4015,  0.9666, -1.1481],
+        [-2.8400, -0.7849, -1.4096],
+        [ 0.9178,  1.5810,  1.3010]], grad_fn=<EmbeddingBackward0>)
+```
