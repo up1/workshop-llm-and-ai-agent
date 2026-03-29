@@ -58,4 +58,13 @@ Decoded text: Hello, world. Is this -- a test?
 
 ## 5. Working with [TikToken](https://github.com/openai/tiktoken)
 ```
+$python step_4_tiktoken.py  
+
+Original text: Hello, world. Is this-- a test?
+Encoded tokens: [13225, 11, 2375, 13, 2763, 495, 375, 261, 1746, 30]
+Decoded text: Hello, world. Is this-- a test?
+Number of tokens: 10
 ```
+
+## 6. Data sampling with a sliding window
+
