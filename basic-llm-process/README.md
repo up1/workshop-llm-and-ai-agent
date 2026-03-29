@@ -67,4 +67,34 @@ Number of tokens: 10
 ```
 
 ## 6. Data sampling with a sliding window
+* Sliding window approach, changing the position by +1
+* Training data for next token prediction
+```
+python step_5_sliding_window.py
+Original text: Hello, world. Is this a test?
+Encoded tokens: [13225, 11, 2375, 13, 2763, 495, 261, 1746, 30]
+Decoded text: Hello, world. Is this a test?
 
+Contexts and desired tokens:
+[13225] --> 11
+[13225, 11] --> 2375
+[13225, 11, 2375] --> 13
+[13225, 11, 2375, 13] --> 2763
+
+Decoded contexts and desired tokens:
+Hello --> ,
+Hello, -->  world
+Hello, world --> .
+Hello, world. -->  Is
+```
+
+## 7. Working with PyTorch
+* Create a PyTorch Dataset and DataLoader for training a language model
+* Use the sliding window approach to create input-target pairs for training
+
+```
+$python step_6_working_with_pytorch.py
+
+First batch: [tensor([[13225,    11,  2375,    13]]), tensor([[  11, 2375,   13, 2763]])]
+Second batch: [tensor([[  11, 2375,   13, 2763]]), tensor([[2375,   13, 2763,  495]])]
+```
