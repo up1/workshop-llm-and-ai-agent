@@ -24,3 +24,22 @@ print("\nEmbedding for token ID 3:\n", embedding_layer(torch.tensor([3])))
 
 # Get the embeddings for the entire input sequence
 print("\nEmbeddings for the entire input sequence:\n", embedding_layer(input_ids))
+
+# convert embeddings to token IDs
+# This is not a straightforward process, as multiple token IDs can have similar embeddings.
+# However, we can find the closest token ID for a given embedding by calculating the cosine similarity between the embedding and the weights of the embedding layer.
+from torch.nn.functional import cosine_similarity
+def embedding_to_token_id(embedding, embedding_layer):
+    # Calculate cosine similarity between the embedding and the weights of the embedding layer
+    similarities = cosine_similarity(embedding.unsqueeze(0), embedding_layer.weight)
+    # Get the index of the most similar token ID
+    token_id = torch.argmax(similarities).item()
+    return token_id
+
+# Example: Convert the embedding of token ID 3 back to a token ID
+embedding = embedding_layer(torch.tensor([3]))
+token_id = embedding_to_token_id(embedding, embedding_layer)
+print("\nOriginal token ID:", 3)
+print("Recovered token ID from embedding:", token_id)
+
+# Token id to sentence
