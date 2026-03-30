@@ -129,3 +129,7 @@ Embeddings for the entire input sequence:
         [-2.8400, -0.7849, -1.4096],
         [ 0.9178,  1.5810,  1.3010]], grad_fn=<EmbeddingBackward0>)
 ```
+
+## Next steps
+* Encoding word positions
+* Building a transformer architecture
